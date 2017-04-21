@@ -3,18 +3,26 @@ include("head.php");
 ?>
 
 <body>
-
-  
-
-<br>
     <div class="row">
+      <div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font ></div>
 
-      <table width="100%">   <td> <h1 class="page-header">  <i class="fa fa-medkit"style="font-size:36px"></i> ข้อมูลยาทั้งหมด&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    </td><td>  <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font >
-      </td>     <small></small>
-         </h1>
-  </table>
-    </div>
+  <ul class="breadcrumb">
+  <li>หน้าแรก</li>
+  <li><a href="index.php">Admin</a></li>
+  <li>ข้อมูลยา</li>
+  <li>ข้อมูลยาทั้งหมด</li>
+  </ul>
+    <div class="panel-group">
+      <div class="panel panel-default">
+          <div class="panel-heading">
+       <div class="col-8">
+
+                <h3 class="page-header"> <i class="fa fa-medkit"style="font-size:36px"></i> ข้อมูลยาทั้งหมด </h3>
+              </div>
+              </div>
+              <div class="panel-body">
+
+
 
     <div class="container">
       <table class="table table-striped table-bordered table table-hover" id="mydata">
@@ -159,7 +167,8 @@ include("head.php");
             <center>
 
                  <a href="index.php"><button type="button" class="btn btn-primary" name="back" value="back">ย้อนกลับ</button></a>
-
+                 <br> <br><br>
+</div></div></div></div></div>
         </div>
       </center>
 <br><br>
@@ -192,7 +201,7 @@ include("head.php");
 $(document).ready(function() {
 	$('#mydata').dataTable({
 		"bLengthChange": false,
-			   "scrollY":  "320px",
+			   "scrollY":  "520px",
     "scrollCollapse": true,
     "paging":         false
 

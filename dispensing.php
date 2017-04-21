@@ -3,17 +3,23 @@ include("head.php");
 ?>
 
 <body>
+  <div class="row">
+    <div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font ></div>
 
-<br>
-    <div class="row">
+  <ul class="breadcrumb">
+  <li>หน้าแรก</li>
+  <li><a href="index.php">Admin</a></li>
+  <li>ข้อมูลนักเรียน</li>
+  <li>ข้อมูลการรักษาทั้งหมด</li>
+  </ul>
+  <div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+     <div class="col-8">
+        <h3 class="page-header"><i class="fa fa-user-md" style="font-size:36px"></i> ข้อมูลจ่ายยา </h3>
+      </div>
 
-      <table width="100%">   <td> <h1 class="page-header">  <i class="fa fa-user-md" style="font-size:36px"></i> ข้อมูลจ่ายยา&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    </td><td>  <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font >
-      </td>     <small></small>
-         </h1>
-  </table>
-    </div>
-
+            <div class="panel-body">
     <div class="container">
       <table class="table table-striped table-bordered table table-hover" id="mydata">
         <thead>
@@ -65,18 +71,14 @@ include("head.php");
         </tbody></center>
 </table>
 
-
-
-
-
             <br>
             <center>
 
-                 <a href="index.php"><button type="button" class="btn btn-primary" name="back" value="back">ย้อนกลับ</button></a>
-
-        </div>
-      </center>
+                 <a href="index.php"><button type="button" class="btn btn-warning" name="back" value="back">ย้อนกลับ</button></a>
 <br><br>
+        </div>  </div>  </div>  </div>  </div>  </div>
+      </center>
+
 
 
 

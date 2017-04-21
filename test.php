@@ -6,14 +6,15 @@ include("head.php");
 <body>
 
   <div class="row">
-          <div class="panel-group">
-            <div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font></div>
+          <div class="panel-group"><div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font ></div>
               <div class="panel panel-default">
-                <div class="panel-heading">
-
+                <div class="panel-heading"><table width="100%">
+                    <td>
                         <h1 class="page-header" > <img src="admin-icon.png" style="width:66px;height:66px;">Admin&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   </font >
-             </div>
+          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    </td><td>  </font >
+              </td>     <small></small>
+                 </h1>
+               </table> </div>
 
 
                 <div class="panel-body">
@@ -29,7 +30,7 @@ include("head.php");
                 <i class="material-icons">person_add</i>&nbsp;<a href="addstudents.php">เพิ่มข้อมูลนักเรียน</a>
               </h5>
                   <h5>
-                  <i class="material-icons">people</i>&nbsp;<a href="studentsdata.php">ข้อมูลนักเรียนทั้งหมด</a>
+                  <i class="material-icons">people</i>&nbsp;<a href="studantsdata.php">ข้อมูลนักเรียนทั้งหมด</a>
               </h5>
                   <h5>
                   <i class="material-icons">face</i>&nbsp;<a href="datatreatstudents.php">ข้อมูลการรักษาทั้งหมด</a>

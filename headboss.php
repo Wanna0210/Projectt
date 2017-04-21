@@ -1,19 +1,18 @@
 <?php
-
 session_start(); //เปิด session
 
 //ตรวจสอบว่าทำการ Login เข้าสู่ระบบมารึยัง
 //if($_SESSION['session_id'] ==''){
-//	echo "<meta http-equiv='refresh' content='1;URL=log-in.php'>";
+	//echo "<meta http-equiv='refresh' content='1;URL=log-in.php'>";
 //}
 
 //ตรวจสอบสถานะว่าใช่ admin รึเปล่า ถ้าไม่ใช่ให้หยุดอยู่แค่นี้
-//else if($_SESSION['status'] != 1) {
+//else if($_SESSION['status'] != 2) {
 	//echo "<meta http-equiv='refresh' content='1;URL=log-in.php'>";
 //} else {
 
 //}
-?>
+   ?>
 <!DOCTYPE html>
 <html lang="th">
 

@@ -3,36 +3,24 @@ include("head.php");
 ?>
 
 <body>
+  <div class="row">
+    <div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font ></div>
 
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class=”col-lg-6”>
-                <h1> โรงเรียนพัฒนาศาสตร์มูลนิธิ  </h1></div>
+<ul class="breadcrumb">
+<li>หน้าแรก</li>
+<li><a href="index.php">Admin</a></li>
+<li>ข้อมูลนักเรียน</li>
+<li>ข้อมูลการรักษาทั้งหมด</li>
+</ul>
+  <div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+     <div class="col-8">
+  <h3 class="page-header"><i class="material-icons" style="font-size:36px">face</i> ข้อมูลการรักษาทั้งหมด </h3>
+            </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="panel-body">
 
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-
-    <div class="row">
-        <table width="100%">
-            <td>
-                <h1 class="page-header"> <i class="material-icons" style="font-size:36px"> people</i> ข้อมูลการรักษาทั้งหมด&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    </td><td>  <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font >
-      </td>     <small></small>
-         </h1>
-       </table> </div>
-
-
-
-
-</div>
-<br><br>
   <div class="container">
   <table class="table table-striped table-bordered table table-hover" id="mydata">
     <thead>
@@ -71,12 +59,12 @@ include("head.php");
 
         <br>
         <center>
- <a href="addtreat.php"><button type="button" class="btn btn-primary" name="back" value="back">เพิ่มข้อมูลการรักษา</button></a>
-             <a href="index.php"><button type="button" class="btn btn-primary" name="back" value="back">ย้อนกลับ</button></a>
 
+             <a href="index.php"><button type="button" class="btn btn-warning" name="back" value="back">ย้อนกลับ</button></a>
 
+<br><br>
   </div>
-
+</div></div></div></div>
 
 
 

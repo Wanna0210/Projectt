@@ -4,19 +4,20 @@ include("head.php");
 
 <body>
 
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class=”col-lg-6”>
-                <h1> โรงเรียนพัฒนาศาสตร์มูลนิธิ  </h1></div>
+  <div class="row">
+    <div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font ></div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
+<ul class="breadcrumb">
+<li>หน้าแรก</li>
+<li><a href="index.php">Admin</a></li>
+<li>ข้อมูลนักเรียน</li>
+<li><a href="index.php">ข้อมูลนักเรียนทั้งหมด</a></li>
+</ul>
+     <div class="col-8">
 
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+              <h1 class="page"> <h3> <i class="material-icons" style="font-size:36px">person_add </i> เพิ่มข้อมูลนักเรียน </h3>  </div>
+
+
 
 
     <div class="row">

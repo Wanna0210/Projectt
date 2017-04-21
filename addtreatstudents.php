@@ -4,14 +4,35 @@ include("head.php");
 
 <body>
     <div class="row">
+      <div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font ></div>
+
+  <ul class="breadcrumb">
+  <li>หน้าแรก</li>
+  <li><a href="index.php">Admin</a></li>
+  <li>ข้อมูลนักเรียน</li>
+  <li><a href="studentsdata.php">ข้อมูลนักเรียนทั้งหมด</a></li>
+    <li>เพิ่มข้อมูลการรักษา</li>
+  </ul>
+
+
+  <div class="panel-group">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+       <div class="col-8">
+
+                <h3 class="page-header"><i class="fa fa-plus-square custom" style="font-size:36px"></i> ข้อมูลการรักษา </h3></div>
+
+
+</div>
+
+  <div class="panel-body">
+
+    <div class="row">
 <center>
         <table width="100%">
             <td>
-                <h1 class="page-header"><i class="fa fa-plus-square custom" style="font-size:36px"></i> ข้อมูลการรักษา&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;    </td><td>  <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font >
-      </td>     <small></small>
-         </h1>
-        </table </div>
+
+
 
         <div class="container">
             <form name="form1" method="post" action="" OnReset="JavaScript:fncAlert();"><!--ล้างข้อมูล-->
@@ -19,7 +40,7 @@ include("head.php");
 </table>
               <table style="width:80%">
 						<tr><td><h4>รหัสนักเรียน : </td><td><input type="text" name="id_student" value="" size="20" maxlength="10"/></td></h4>
-						<td><h4> วันที่เข้ารับการรักษา : </td><td><input id="datetimepicker" type="text" ></h4>   </td>
+						<td><h4> วันที่เข้ารับการรักษา : </td><td><input name="txtdate" type="text" id="txtdate" value="<? echo date("d/m/Y H:i"); ?>"</h4>   </td>
            </tr>
            <tr>
 						<br><td><h4>ชื่อ : </h4> </td><td><input type="text" name="id_med" value="" size="20" maxlength="20" disabled="disabled"></td>
@@ -36,11 +57,20 @@ include("head.php");
 </table>
 </center>
         </div>
-        <div class="row">
-            <h1 class="page-header"><i class="material-icons" style="font-size:36px">add_circle</i> รายละเอียด</h1>
-            <div class="container">
-                <center>
-                    <div class="col-md-7" style=";">
+
+        </div>
+          </div>
+          </div>
+
+  <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-8">
+              <h3 class="page-header">
+                <i class="material-icons" style="font-size:36px">add_circle</i> รายละเอียด</h3>
+                  <div class="container">
+                    <center>
+                      <div class="col-md-7" style=";">
 
                         <h:body>
                             <h:form>
@@ -156,11 +186,12 @@ include("head.php");
                 <button type="reset" class="btn btn-danger btn-sm" name="reset" value="Reset"><span class = "glyphicon glyphicon-remove"></span> ล้าง</button> &nbsp;
                 <a href="index.php"><button type="button" class="btn btn-warning" name="back" value="back">ย้อนกลับ</button></a>
                 </form>
-        </div>
+                <br>  <br>  <br>
+        </div>  </div>  </div>  </div>  </div>
 			</center>
         <br><br>
 
-
+  </div>  </div>
 
 
   <!--<style>

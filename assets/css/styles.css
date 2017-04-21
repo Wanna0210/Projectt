@@ -16,7 +16,7 @@ body {
 }
 
 .login-form {
-	margin: 50px auto;
+	margin: 140px auto;
 	max-width: 320px;
 }
 
@@ -51,11 +51,11 @@ body {
 		.login-form .panel .panel-footer a {
 			color: #898a8a !important;
 		}
-	
+
 form[role=login] {
 	font: 13px/2.2em Lato, serif;
 	color: #999;
-}	
+}
 	form[role=login] label {
 		font-size: 15px;
 		font-weight: normal;
@@ -80,6 +80,6 @@ form[role=login] {
 		        box-shadow: inset 0 2px 2px 0 rgba(150, 150, 150, .1);
 	}
 	form[role=login] button {
-		padding: 5px 40px;	
+		padding: 5px 40px;
 		margin-top: 15px;
 	}
