@@ -196,7 +196,7 @@ include("head.php");
                 </center>
             </div>
             <br>
-            <center>
+
 
               <script language="javascript"></script>
               <center>
@@ -215,7 +215,7 @@ include("head.php");
                   </div>
 
 
-<!--        <style>
+        <style>
             table,
             th,
             td {
