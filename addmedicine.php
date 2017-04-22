@@ -215,7 +215,7 @@ include("head.php");
                   </div>
 
 
-        <style>
+<!--        <style>
             table,
             th,
             td {
