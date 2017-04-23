@@ -235,7 +235,11 @@
     "'": '&#x27;',
     '`': '&#x60;'
   };
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> origin/master
   var unescapeMap = {
     '&amp;': '&',
     '&lt;': '<',
@@ -308,7 +312,11 @@
 
   // part of this is duplicated in i18n/defaults-en_US.js. Make sure to update both.
   Selectpicker.DEFAULTS = {
+<<<<<<< HEAD
     noneSelectedText: '---เลือกยาที่ใช้ ---',
+=======
+    noneSelectedText: 'Nothing selected',
+>>>>>>> origin/master
     noneResultsText: 'No results matched {0}',
     countSelectedText: function (numSelected, numTotal) {
       return (numSelected == 1) ? "{0} item selected" : "{0} items selected";
@@ -1189,7 +1197,11 @@
     },
 
     tabIndex: function () {
+<<<<<<< HEAD
       if (this.$element.data('tabindex') !== this.$element.attr('tabindex') &&
+=======
+      if (this.$element.data('tabindex') !== this.$element.attr('tabindex') && 
+>>>>>>> origin/master
         (this.$element.attr('tabindex') !== -98 && this.$element.attr('tabindex') !== '-98')) {
         this.$element.data('tabindex', this.$element.attr('tabindex'));
         this.$button.attr('tabindex', this.$element.data('tabindex'));
@@ -1492,13 +1504,21 @@
           $lisVisible = this.$lis.not('.divider, .dropdown-header, .disabled, .hidden'),
           lisVisLen = $lisVisible.length,
           selectedOptions = [];
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> origin/master
       if (status) {
         if ($lisVisible.filter('.selected').length === $lisVisible.length) return;
       } else {
         if ($lisVisible.filter('.selected').length === 0) return;
       }
+<<<<<<< HEAD
 
+=======
+          
+>>>>>>> origin/master
       $lisVisible.toggleClass('selected', status);
 
       for (var i = 0; i < lisVisLen; i++) {
