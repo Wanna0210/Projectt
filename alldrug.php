@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <?php
 include("head.php");
 ?>
@@ -22,156 +23,75 @@ include("head.php");
               </div>
               <div class="panel-body">
 
+        <table class="table table-striped table-bordered table table-hover" id="mydata">
+
+          <?php
+          //1. เชื่อมต่อ database:
+          include('connect.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
+          //2. query ข้อมูลจากตาราง tb_member:
+            $query_show = "SELECT * FROM addmedicine ORDER BY id_med asc" or die("Error:" . mysqli_error());
+            //3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result .
+            $result_show = mysqli_query($con, $query_show);
+            //4 . แสดงข้อมูลที่ query ออกมา โดยใช้ตารางในการจัดข้อมูล:
+            //หัวข้อตาราง
+            echo "<tr align='center' bgcolor='#BEBEBE'>
+            <td>รหัสยา</td>
+            <td>ชื่อยา</td>
+            <td>วันหมดอายุ</td>
+            <td>ขนาดบรรจุภัณฑ์</td>
+            <td>หน่วย</td>
+            <td>บรรจุ</td>
+            <td>หน่วย</td>
+            <td>วิธีใช้</td>
+            <td>สรรพคุณ</td>
+            <td>คำเตือน</td>
+            <td>แก้ไข</td>
+            <td>ลบ</td>
+            </tr>";
+
+            while($row_show = mysqli_fetch_array($result_show)) {
+              echo "<tr align='center' bgcolor='#FFE4B5'>";
+              echo "<td>" .$row_show["id_med"] .  "</td> ";
+              echo "<td>" .$row_show["name_med"] .  "</td> ";
+              echo "<td>" .$row_show["expiredDate"] .  "</td> ";
+              echo "<td>" .$row_show["packagingdimensions"] .  "</td> ";
+              echo "<td>" .$row_show["prov1"] .  "</td> ";
+              echo "<td>" .$row_show["packup"] .  "</td> ";
+              echo "<td>" .$row_show["prov2"] .  "</td> ";
+              echo "<td>" .$row_show["howtouse"] .  "</td> ";
+              echo "<td>" .$row_show["properties"] .  "</td> ";
+              echo "<td>" .$row_show["warning"] .  "</td> ";
+
+              //แก้ไขข้อมูล
+              echo "<td><a href='editalldrug.php?id_med=$row_show[0]'>edit</a></td> ";
+
+              //ลบข้อมูล
+              echo "<td>
+              <a href='deletealldrug.php?id_med=$row_show[0]' onclick=\"return confirm('Do you want to delete this record? !!!')\">del</a></td> ";
+              echo "</tr>";
+            }
+            echo "";
+            //5. close connection
+            mysqli_close($con);
+            ?>
+              </table>
+
+          </div>
 
 
-    <div class="container">
-      <table class="table table-striped table-bordered table table-hover" id="mydata">
-        <thead>
-            <tr>
-              <th>รหัสยา</th>
-                <th>ชื่อยา/อุปกรณ์ปฐมพยาบาล</th>
-                <th>จำนวนคงเหลือ</th>
-                <th>หน่วย</th>
-                <th>ขนาดบรรจุภัณฑ์</th>
-                <th>หน่วย</th>
-                <th>วันหมดอายุ</th>
-                <th>แก้ไข</th>
-                <th>รายละเอียด</th>
-            </tr>
-        </thead>
-        <tfoot>
+                        <br>  <br>  <br>
+                        <center>
 
-        </tfoot>
-        <tbody><center>
-          <tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-            <td>2/11/2589</td>
-            <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td><a href=index.php>รายละเอียด<i class="fa fa-eye" aria-hidden="true"></i></a></td>
-
-          </tr>
-          <tr>
-            <td>C03-11</td>
-            <td>Paracetamon</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>8</td>
-              <td>2/11/2589</td>
-            <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr><tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-              <td>2/11/2589</td>
-              <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr><tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-              <td>2/11/2589</td>
-              <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr><tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-              <td>2/11/2589</td>
-              <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr><tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-              <td>2/11/2589</td>
-              <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr><tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-              <td>2/11/2589</td>
-              <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr><tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-              <td>2/11/2589</td>
-              <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr><tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-              <td>2/11/2589</td>
-              <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr><tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-              <td>2/11/2589</td>
-              <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr><tr>
-            <td>C02-11</td>
-            <td>Hydroxycine</td>
-            <td>5</td>
-            <td>แผง</td>
-            <td>กล่อง</td>
-            <td>5</td>
-              <td>2/11/2589</td>
-              <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a></td>
-            <td>Hydroxycine</td>
-          </tr>
-        </tbody></center>
-</table>
+                             <a href="index.php"><button type="button" class="btn btn-warning" name="back" value="back">ย้อนกลับ</button></a>
+        <br>  <br>  <br>
+          </div>  </div>  </div>  </div>
 
 
 
 
 
-            <br>
-            <center>
 
-                 <a href="index.php"><button type="button" class="btn btn-primary" name="back" value="back">ย้อนกลับ</button></a>
-                 <br> <br><br>
-</div></div></div></div></div>
-        </div>
-      </center>
-<br><br>
+
 
 
 

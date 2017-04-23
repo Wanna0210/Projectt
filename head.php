@@ -26,7 +26,6 @@ session_start(); //เปิด session
     <meta name="author" content="">
 
 
-
     <title>Nurse Room Management Information System</title>
 
     <!-- Bootstrap Core CSS -->
@@ -44,7 +43,10 @@ session_start(); //เปิด session
 <link href="css/dataTables.bootstrap.min.css" rel="stylesheet">
 <!-- ปฏิทืน -->
 <link href="css/jquery.datetimepicker.css" rel="stylesheet">
-
+<!-- Select-->
+<link rel="stylesheet" href="css/bootstrap-select.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -87,5 +89,5 @@ session_start(); //เปิด session
 			<!-- /.container-fluid -->
 	</nav>
 </body>
-
+  <script src="js/bootstrap-select.js"></script>
 </html>

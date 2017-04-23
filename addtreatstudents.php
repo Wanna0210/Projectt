@@ -2,199 +2,223 @@
 include("head.php");
 ?>
 
+
 <body>
-    <div class="row">
-      <div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font ></div>
+  <div class="row">
+    <div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font ></div>
 
-  <ul class="breadcrumb">
-  <li>หน้าแรก</li>
-  <li><a href="index.php">Admin</a></li>
-  <li>ข้อมูลนักเรียน</li>
-  <li><a href="studentsdata.php">ข้อมูลนักเรียนทั้งหมด</a></li>
-    <li>เพิ่มข้อมูลการรักษา</li>
-  </ul>
-
-
+<ul class="breadcrumb">
+<li>หน้าแรก</li>
+<li><a href="index.php">Admin</a></li>
+<li>ข้อมูลนักเรียน</li>
+<li>เพิ่มข้อมูลนักเรียน</li>
+</ul>
   <div class="panel-group">
     <div class="panel panel-default">
         <div class="panel-heading">
-       <div class="col-8">
+     <div class="col-8">
 
-                <h3 class="page-header"><i class="fa fa-plus-square custom" style="font-size:36px"></i> ข้อมูลการรักษา </h3></div>
+              <h3 class="page-header">
+                <i class="fa fa-plus-square custom" style="font-size:36px"></i> ข้อมูลการรักษา </h3></div>
+      </div>
 
-
-</div>
-
-  <div class="panel-body">
-
-    <div class="row">
-<center>
+            <div class="panel-body">
+              <div class="row">
+  <center>
         <table width="100%">
-            <td>
-
 
 
         <div class="container">
-            <form name="form1" method="post" action="" OnReset="JavaScript:fncAlert();"><!--ล้างข้อมูล-->
-			<form name="addtypemed" method="post" action="addmedsave.php">
-</table>
-              <table style="width:80%">
-						<tr><td><h4>รหัสนักเรียน : </td><td><input type="text" name="id_student" value="" size="20" maxlength="10"/></td></h4>
-						<td><h4> วันที่เข้ารับการรักษา : </td><td><input name="txtdate" type="text" id="txtdate" value="<? echo date("d/m/Y H:i"); ?>"</h4>   </td>
-           </tr>
-           <tr>
-						<br><td><h4>ชื่อ : </h4> </td><td><input type="text" name="id_med" value="" size="20" maxlength="20" disabled="disabled"></td>
-            <td colspan="2" valign="top"><h4>สถานะ :
-       <form><label class="radio-inline"><input type="radio" name="sleep" id="sleep">นอน</label>
-            <label class="radio-inline"><input type="radio" name="sleepless" id="sleepless">ไม่นอน</label>
-            <label class="radio-inline"><input type="radio" name="hospital" id="hospital">ส่งโรงพยาบาล</label></h4></td>
- </h4>
-          </form></h4></tr>
-          <tr>
-            <td><h4>คาบเรียน : </td><td><input type="text" name="class" value="" size="1" maxlength="1"/> - <input type="text" name="toclass" value="" size="1" maxlength="1"/></h4></td>
-          </tr>
 
-</table>
+
+            </table>
+
+<form id="formDataTreatment">  <!--ล้างข้อมูล-->
+            <br><br>
+
+<table style="width:70%">
+  <!---คอลัมแรก--->
+             <tr><td>
+           </td>
+               <td><h4>รหัสนักเรียน : </h4></td>
+                 <td><input type="text" name="id_student" value="" size="20" maxlength="10" disabled="disabled"></td>
+
+               <td><h4>วันที่เข้ารับการรักษา : </h4></td>
+                 <td><input name="txtdate" type="text" id="txtdate" value="<? echo date("d/m/Y H:i"); ?>"></td>
+                 <td></td>
+             </tr>
+
+ <!---คอลัมสอง--->
+             <tr>
+               <td width="5%">
+             </td>
+               <td><h4>ชื่อ-สกุล : </h4></td>
+                 <td><input type="text" name="name" value="" size="20" maxlength="1" disabled="disabled"></td>
+
+                 <td><h4> ระดับชั้น : </h4></td>
+                   <td><input type="text" name="level" value="" size="20" maxlength="1" disabled="disabled"></td>
+             </tr>
+
+ <!---คอลัมสาม-->
+             <tr>
+               <td>
+             </td>
+               <td><h4>คาบเรียน : </h4></td>
+               <td>
+                 <input type="text" name="class" value="" size="1" maxlength="1"/> -
+                 <input type="text" name="toclass" value="" size="1" maxlength="1"/>
+               </td>
+
+               <td><h4> สถานะ : </h4></td>
+                   <td><div class="col-xs-13">
+                     <select class="form-control" name="status" id="status" data-width="fit">
+                       <option value="">--- เลือกสถานะ --- </option>
+                       <option value="นอน">นอน</option>
+                       <option value="ไม่นอน">ไม่นอน</option>
+                       <option value="ส่งโรงพยาบาล">ส่งโรงพยาบาล</option>
+                     </select>
+                       </div>
+                   </td>
+                   <td width="20%"></td>
+             </tr>
+
+         </table>
+ </center>
+ <br><br><br><br>
+         </div>
+         </div>
+           </div>
+           </div>
+
+
+ <!---ขึ้นตารางใหม่-->
+   <div class="panel panel-default">
+         <div class="panel-heading">
+           <div class="col-8">
+
+               <h3 class="page-header">
+                 <i class="material-icons" style="font-size:36px">add_circle</i> รายละเอียด</h3></div>
+                 <br><br>
+
+                 <div class="panel-body">
+                     <div class="row">
+
+
+ <center>
+         <div class="" style=";">
+         <table style= "width:72%">
+
+ <!---คอลัมแรก--->
+                       <tr><td width=5%></td>
+                         <td><h4>อาการ : </h4></td>
+                           <td colspan="2"><div class="col-xs-13">
+                           <select class="form-control" name="symptom" id="symptom" data-width="fit" >
+                             <option value="">--- เลือกอาการ ---</option>
+                             <option value="ปวดหัว">ปวดหัว</option>
+                             <option value="เป็นไข้">เป็นไข้</option>
+                             <option value="ปวดท้อง">ปวดท้อง</option>
+                             <option value="ปวดท้องประจำเดือน">ปวดท้องประจำเดือน</option>
+                             <option value="อุบัติเหตุ">อุบัติเหตุ</option>
+                           </select>
+                         </div>&nbsp; &nbsp;&nbsp;&nbsp;
+                       </td><td colspan="3"></td>
+                     </tr>
+
+ <!---คอลัมสอง--->
+                     <tr><td></td>
+                         <td valign="top"><h4>ชื่อยา :</h4></td>
+                           <td colspan="4"> <div class="col-xs-15">
+                             <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="--- เลือกชื่อยา ---">
+        <option>ยาพาราซีตามอน</option>
+        <option>ยาแก้แพ้</option>
+        <option>ยาญ่า</option>
+        <option>ยา</option>
+        <option>A rrm</option>
+      </select>
+                              </div></td>
+
+                     </tr>
+
+ <!---คอลัมสาม--->
+                     <tr><td></td>
+                         <td><h4>จำนวนที่ใช้ :</td>
+                           <td><input type="text" name="amountused" value="" size="1" maxlength="4"/></h4></td>
+
+                         <td colspan="2"><div class="col-xs-11">
+                           <select class="form-control" name="unit" id="unit" data-width="fit">
+                               <option value="">--- หน่วย ---</option>
+                               <option value="กล่อง">กล่อง</option>
+                               <option value="กระปุก">กระปุก</option>
+                               <option value="ขวด">ขวด</option>
+                               <option value="แผง">แผง</option>
+                               <option value="แผ่น">แผ่น</option>
+                           </select>
+                           </div>
+                         </td>
+                         <td width="55%"><button id="btnAdd" type="button" class="btn btn-default btn-sm" name="add" value="add"><span class = "glyphicon glyphicon-plus"></span> เพิ่ม</button>
+                         </td>
+
+
+                     </tr>
+         </table>
+         <br>  <br>
+
+         </div>
+                     </div>
+
+
+
+ </div>
+
+ <br>
+
+ <center>
+               <div class="container" >
+           <div class="col-md-12 portfolio-item">
+             <table class="table table-striped table-bordered table table-hover" id="mydata" Align="center">
+               <thead>
+                   <tr>
+                     <th>ลำดับ</th>
+                       <th>อาการ</th>
+                         <th>รหัสยา</th>
+                           <th>ชื่อยาที่ใช้รักษา</th>
+                           <th>จำนวนยา</th>
+                             <th>หน่วย</th>
+
+                   </tr>
+               </thead>
+               <tfoot>
+               </tfoot>
+               <br>
+               <tbody>
+
+
+               </tbody>
+             </table>
+             </div>
+</div>
 </center>
-        </div>
+<br>
 
-        </div>
-          </div>
-          </div>
+<script language="javascript"></script>
+<center>
+<button id="btnSave" type="button" class="btn btn-success btn-sm" name="save" value="save"><span class = "glyphicon glyphicon-ok"></span> บันทึก</button> &nbsp;
+<button type="reset" class="btn btn-danger btn-sm" name="reset" value="Reset"><span class = "glyphicon glyphicon-remove"></span> ล้าง</button> &nbsp;
+<a href="index.php"><button type="button" class="btn btn-warning" name="back" value="back">ย้อนกลับ</button></a>
+</form>
 
-  <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-8">
-              <h3 class="page-header">
-                <i class="material-icons" style="font-size:36px">add_circle</i> รายละเอียด</h3>
-                  <div class="container">
-                    <center>
-                      <div class="col-md-7" style=";">
-
-                        <h:body>
-                            <h:form>
-                                <table width="70%">
-                                    <tr>
-                                        <td>
-                                            <h4>อาการ :</td>
-                          <td colspan="2"><div class="col-xs-6"><select class="form-control" id="sel1">
-                            <option value="select">เลือกอาการ</option>
-                            <option value="head">ปวดหัว</option>
-<option value="cool">เป็นไข้</option>
-<option value="volvo">ปวดท้อง</option>
-<option value="volvo">ปวดท้องประจำเดือน</option>
-</select></div>&nbsp; &nbsp;&nbsp;&nbsp;
+  <br>  <br>  <br>
 
 
 
-</h4>  </td>
-</tr>
-<tr>
-
-                                        <td valign="top">
-                                            <h4>  รหัสยา : </td>
-                          <td colspan="2"><input type="text" name="id_med" value="" size="3" maxlength="10"/> - <input type="text" name="name_med" value="" size="20" maxlength="30"/> </h4></td>
-                                    </tr>
-                                    <tr>
-                                        <td valign="top">
-                                            <h4>ชื่อยา :</td>
-                            <td colspan="2"><input type="text" name="name_med" value="" size="28" maxlength="30"/></h4></td>
-
-                          </tr>  </center>
-
-
-                                      <table width="70%">
-                                        <tr>
-                                            <td valign="top"><h4>คงเหลือ :</td>
-                                    <td><input type="text" name="name_med" value="" size="1" maxlength="4"/></h4></td>
-                                    <td>
-                                    <select class="form-control" id="sel1">
-                                          <option value="">หน่วย</option>
-                                          <option value="กล่อง">กล่อง</option>
-                                          <option value="กระปุก">กระปุก</option>
-                                          <option value="ขวด">ขวด</option>
-                                          <option value="แผง">แผง</option>
-                                          <option value="สมุทรปราการ">แผ่น</option>
-                                                        </select>
-
-
-                                    </td><td>&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        </tr>
-                                  </table>
-
-</div>
-                    </div>
-
-                    </table>
-  <center>
-
-
-
-                    </center>
-</div>
-
-<!--<div class="form-group"><input type="date" id="birthDate" class="form-control"></div>-->
-
-
-
-
-
-                    </h:form>
-                                  </h:body>
-
-
-            <br>
-
-            <center>
-                <div class="container" >
-            <div class="col-md-12 portfolio-item">
-              <table class="table table-striped table-bordered table table-hover" id="mydata" Align="center">
-                <thead>
-                    <tr>
-                      <th>ลำดับ</th>
-                        <th>อาการ</th>
-                          <th>รหัสยา</th>
-                            <th>ชื่อยาที่ใช้รักษา</th>
-                            <th>จำนวนยา</th>
-                              <th>หน่วย</th>
-
-                    </tr>
-                </thead>
-                <tfoot>
-                </tfoot>
-                <br>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>ปวดหัว</td>
-                    <td>C02-01</td>
-                    <td>Paracetamon</td>
-                    <td>2</td>
-                    <td>เม็ด</td>
-                  </tr>
-
-                </tbody>
-              </table>
-              </div>
-</div>
-              <br>
-                <script language="javascript">
-                </script>
-
-                <button type="button" class="btn btn-success btn-sm" name="save" value="save"><span class = "glyphicon glyphicon-ok"></span> บันทึก</button> &nbsp;
-                <button type="reset" class="btn btn-danger btn-sm" name="reset" value="Reset"><span class = "glyphicon glyphicon-remove"></span> ล้าง</button> &nbsp;
-                <a href="index.php"><button type="button" class="btn btn-warning" name="back" value="back">ย้อนกลับ</button></a>
-                </form>
-                <br>  <br>  <br>
-        </div>  </div>  </div>  </div>  </div>
-			</center>
+        </center>
         <br><br>
+          </div>
+  </div>
+  </div>
+</div>
 
-  </div>  </div>
-
-
-  <!--<style>
+<!--    <style>
             table,
             th,
             td {
@@ -210,55 +234,56 @@ include("head.php");
         </style> -->
 
 
+        <script src="js/jquery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 
-
-
-</body>
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-
-<!--date-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="่js/datejquery.js"></script>
-<script src="build/jquery.datetimepicker.full.js"></script>
-<script>/*
-window.onerror = function(errorMsg) {
-	$('#console').html($('#console').html()+'<br>'+errorMsg)
-}*/
-
-$.datetimepicker.setLocale('th');
-
-$('#datetimepicker').datetimepicker({
-	yearOffset:0,
-	lang:'th',
-	//timepicker:false,
-	format:'d/m/Y:H:i',
-	formatDate:'Y/m/d',
-	minDate:'-1970/01/0', // yesterday is minimum date
-	maxDate:'+1980/12/31' // and tommorow is maximum date calendar
-});
+        <!--date-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
 
 
-</script>
 
 
-<!--table-->
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.min.js"></script>
-<script>
-$(document).ready(function() {
-	$('#mydata').dataTable({
-		"bLengthChange": false,
-    "dataTables_info": false
-			   "scrollY":  "320px",
-    "scrollCollapse": false,
-    "paging":         false
+        <!--table-->
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap.min.js"></script>
+        <script>
+        $(document).ready(function() {
+        	$('#mydata').dataTable({
+        		"bLengthChange": false,
+            "dataTables_info": false
+        			   "scrollY":  "320px",
+            "scrollCollapse": false,
+            "paging":         false
 
-	});
-});
-</script>
+        	});
+        });
+        </script>
 
-</html>
+        <script>
+        $('#btnSave').click(function(e){
+
+        	var data =  $('#formDataTreatment').serialize();
+        	console.log("this is: "+data);
+        	$.ajax({
+        		method: 'POST',
+        		datatype: 'String',
+        		data: data,
+        		url: 'inserttreastudents.php',
+
+        		success: function(res){
+        				console.log(res);
+        				if(res=='success'){window.location.href = 'index.php';
+        					alert('Save Successfully.');
+        				}
+        		}
+        	});
+        });
+
+
+        </script>
+        </body>
+
+        </html>

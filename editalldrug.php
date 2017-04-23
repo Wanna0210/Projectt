@@ -1,7 +1,21 @@
 <?php
 include("head.php");
-?>
+// เชื่่อมต่อฐานข้อมูล
+include('connect.php');
+//เรียกข้อมูลจาก รหัส มาแสดงใน textbox
 
+
+
+if($_REQUEST['id_med'] != "")
+
+$id = $_REQUEST['id_med'];
+$query_show = "SELECT * FROM addmedicine where id_med = '$id'";
+$result_show = mysqli_query($con, $query_show);
+$row_show = mysqli_fetch_array($result_show);
+
+//--->
+
+?>
 <body>
 
 <div class="row">
@@ -35,7 +49,7 @@ include("head.php");
                                         <td valign="top">
                                             <h4>  รหัสยา : </td>
                                               <td colspan="2">
-                                                <input type="text" name="id_med" value="" size="10" maxlength="30"/> </h4></td>
+                                                <input type="text" name="id_med" value="<?=$row_show['id_med']?>" size="10" maxlength="30"/> </h4></td>
                                     </tr>
 
 
@@ -43,7 +57,7 @@ include("head.php");
                                         <td valign="top">
                                             <h4>ชื่อยา :</td>
                                               <td colspan="2">
-                                                <input type="text" name="name_med" value="" size="28" maxlength="30"/></h4></td>
+                                                <input type="text" name="name_med" value="<?=$row_show['name_med']?>" size="28" maxlength="30"/></h4></td>
                                     </tr>
 
 
@@ -51,7 +65,7 @@ include("head.php");
                                         <td valign="top">
                                             <h4>วันหมดอายุ :&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</h4></td>
                                               <td colspan="2">
-                                                <div class="form-group"><input type="date" id="expiredDate" name="expiredDate" class="form-control"></div>
+                                                <div class="form-group"><input type="date" id="expiredDate" name="expiredDate" value="<?=$row_show['expiredDate']?>" class="form-control"></div>
                                               </td>
                                     </tr>
 
@@ -69,10 +83,10 @@ include("head.php");
                         <tr>
                             <td ALIGN=left valign="top">
                                 <h4>ขนาดบรรจุภัณฑ์ :</td>
-                          <td colspan="1"><input type="text" name="packagingdimensions" value="" size="5" maxlength="4"/></h4></td>
+                          <td colspan="1"><input type="text" name="packagingdimensions" value="<?=$row_show['packagingdimensions']?>" size="5" maxlength="4"/></h4></td>
 
-                            <td><select class="form-control" name="prov1" id="prov1" data-width="fit">
-                                  <option value="หน่วย">หน่วย</option>
+                            <td><select class="form-control" name="prov1" id="prov1"  data-width="fit">
+                                  <option value="">หน่วย</option>
                                   <option value="กล่อง">กล่อง</option>
                                   <option value="กระปุก">กระปุก</option>
                                 </select></td>
@@ -84,8 +98,7 @@ include("head.php");
                         <tr>
                             <td ALIGN=left valign="top">
                                 <h4>บรรจุ :</td>
-                                      <td colspan="1"><input type="text" name="packup" value="" size="5" maxlength="4"/></h4> </td>
-
+                                      <td colspan="1"><input type="text" name="packup" value="<?=$row_show['packup']?>" size="5" maxlength="4"/></h4> </td>
                             <td><select class="form-control" name="prov2" id="prov2" data-width="fit">>
                                   <option value="">หน่วย</option>
                                   <option value="เม็ด">เม็ด</option>
@@ -108,17 +121,17 @@ include("head.php");
                         <table>
                             <tr>
                                 <td valign="top">วิธีใช้ :</td>
-                                <td><textarea name="howtouse" rows="12" cols="40" wrap="physical"></textarea></td>
+                                <td><textarea name="howtouse" rows="12" cols="40" wrap="physical"><?=$row_show['howtouse']?></textarea></td>
                             </tr>
                               <td><br></td>
                             <tr>
                                 <td valign="top">สรรพคุณ :</td>
-                                <td><textarea name="properties" rows="15" cols="40" wrap="physical"></textarea></td>
+                                <td><textarea name="properties" rows="15" cols="40" wrap="physical"><?=$row_show['properties']?></textarea></td>
                             </tr>
                             <td><br>   </td>
                             <tr>
                                 <td valign="top">คำเตือน :</td>
-                                <td><textarea name="warning" rows="12" cols="40" wrap="physical"></textarea></td>
+                                <td><textarea name="warning" rows="12" cols="40" wrap="physical"><?=$row_show['warning']?></textarea></td>
                             </tr>
                             <td><br>   </td>
 
@@ -131,9 +144,14 @@ include("head.php");
             <br>
 
 
+
+
+
+
+
               <script language="javascript"></script>
               <center>
-              <button id="btnSave" type="button" class="btn btn-success btn-sm" name="save" value="save"><span class = "glyphicon glyphicon-ok"></span> บันทึก</button> &nbsp;
+              <a href="alldrug.php"><button id="btnSave" type="button" class="btn btn-success btn-sm" name="save" value="save"><span class = "glyphicon glyphicon-ok"></span> บันทึก</button></a> &nbsp;
               <button type="reset" class="btn btn-danger btn-sm" name="reset" value="Reset"><span class = "glyphicon glyphicon-remove"></span> ล้าง</button> &nbsp;
               <a href="index.php"><button type="button" class="btn btn-warning" name="back" value="back">ย้อนกลับ</button></a>
 
