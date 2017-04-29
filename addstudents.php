@@ -169,11 +169,13 @@ $('#btnSave').click(function(e){
 		data: data,
 		url: 'insertstudent.php',
 
-		success: function(res){
-				console.log(res);
-				if(res=='success'){window.location.href = 'addtreatstudents.php';
-					alert('Save Successfully.');
-				}
+    success: function(res){
+        console.log(res);
+        if(res=='success'){window.location.href = 'index.php';
+          alert('บันทึกข้อมูลสำเร็จแล้ว');
+        }else {
+          alert('กรุณาลองอีกครั้ง');
+        }
 		}
 	});
 });

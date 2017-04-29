@@ -22,7 +22,9 @@ include("head.php");
 
             <div class="panel-body">
     <div class="container">
+          <div id="printableArea">
         <center>
+          <h2><strong>รายงานข้อมูลตามอาการ</strong></h2>
         <h3> <label for="month">ช่วงเวลา</label>
 
 <select name="month" id="month" >
@@ -76,6 +78,52 @@ include("head.php");
 </select>
 </h3>
         </center>
+        <table class="table table-striped table-bordered table table-hover" id="mydata">
+          <thead>
+            <tr>
+              <th>รหัสนักเรียน</th>
+                <th>ชื่อ-สกุล</th>
+                <th>ระดับชั้น</th>
+                <th>วันที่:เวลาที่เข้าใช้</th>
+
+                <th>อาการ</th>
+
+
+            </tr>
+          </thead>
+
+          <tbody><center>
+            <?php
+              //1. เชื่อมต่อ database:
+              include('connect.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
+              //2. query ข้อมูลจากตาราง tb_member:
+                $query_show = "SELECT * FROM addstudents,addtreatstudent ORDER BY id_student,datetimes asc" or die("Error:" . mysqli_error());
+                //3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result .
+                $result_show = mysqli_query($con, $query_show);
+                //4 . แสดงข้อมูลที่ query ออกมา โดยใช้ตารางในการจัดข้อมูล:
+                //หัวข้อตาราง
+
+
+                while($row_show = mysqli_fetch_array($result_show)) {
+
+                  echo "<tr align='center' bgcolor='#FFE4B5'>";
+                  echo "<td>" .$row_show["id_student"] .  "</td> ";
+                  echo "<td>"  .$row_show["fname"] .  " " .$row_show["lname"] .  "</td> ";
+                  echo "<td>" .$row_show["level"] .  "</td> ";
+                  echo "<td>" .$row_show["datetimes"] .  "</td> ";
+
+                  echo "<td>" .$row_show["symptom"] .  "</td> ";
+
+
+
+                }
+                echo "";
+                //5. close connection
+                mysqli_close($con);
+                ?>
+
+          </tbody></center>
+      </table>
     </div>
 
 
@@ -85,7 +133,7 @@ include("head.php");
             <br>
             <center>
 
-                <button type="button" class="btn btn-primary" name="print" value="print" >พิมพ์</button> &nbsp; &nbsp;&nbsp;&nbsp;
+              <button type="button" class="btn btn-primary" name="print" value="print" onclick="printDiv('printableArea')" value="print a div!">พิมพ์</button> &nbsp; &nbsp;&nbsp;&nbsp;
                 <a href="index.php"><button type="button" class="btn btn-primary" name="back" value="back">ย้อนกลับ</button></a>
 
         </div>
@@ -111,5 +159,11 @@ include("head.php");
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<!--table-->
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<script>
+$('#mydata').dataTable();
+</script>
+</html>
 </html>

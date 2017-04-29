@@ -17,37 +17,45 @@ include("head.php");
       <div class="panel panel-default">
           <div class="panel-heading">
        <div class="col-8">
+          <h3 class="page-header"> <i class="fa fa-medkit"style="font-size:36px"></i> ข้อมูลยาทั้งหมด </h3>
+        </div>
+            </div>
 
-                <h3 class="page-header"> <i class="fa fa-medkit"style="font-size:36px"></i> ข้อมูลยาทั้งหมด </h3>
-              </div>
-              </div>
+
               <div class="panel-body">
 
         <table class="table table-striped table-bordered table table-hover" id="mydata">
+
+          <!--หัวข้อตาราง-->
+          <thead>
+            <tr align='center' bgcolor='#BEBEBE'>
+              <td>รหัสยา</td>
+              <td>ชื่อยา</td>
+              <td>วันหมดอายุ</td>
+              <td>ขนาดบรรจุภัณฑ์</td>
+              <td>หน่วย</td>
+              <td>บรรจุ</td>
+              <td>หน่วย</td>
+              <td>วิธีใช้</td>
+              <td>สรรพคุณ</td>
+              <td>คำเตือน</td>
+              <td>แก้ไข</td>
+              <td>ลบ</td>
+              </tr>
+          </thead>
+            <tfoot>
+            </tfoot>
 
           <?php
           //1. เชื่อมต่อ database:
           include('connect.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
           //2. query ข้อมูลจากตาราง tb_member:
             $query_show = "SELECT * FROM addmedicine ORDER BY id_med asc" or die("Error:" . mysqli_error());
+
             //3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result .
             $result_show = mysqli_query($con, $query_show);
+
             //4 . แสดงข้อมูลที่ query ออกมา โดยใช้ตารางในการจัดข้อมูล:
-            //หัวข้อตาราง
-            echo "<tr align='center' bgcolor='#BEBEBE'>
-            <td>รหัสยา</td>
-            <td>ชื่อยา</td>
-            <td>วันหมดอายุ</td>
-            <td>ขนาดบรรจุภัณฑ์</td>
-            <td>หน่วย</td>
-            <td>บรรจุ</td>
-            <td>หน่วย</td>
-            <td>วิธีใช้</td>
-            <td>สรรพคุณ</td>
-            <td>คำเตือน</td>
-            <td>แก้ไข</td>
-            <td>ลบ</td>
-            </tr>";
 
             while($row_show = mysqli_fetch_array($result_show)) {
               echo "<tr align='center' bgcolor='#FFE4B5'>";
@@ -74,22 +82,14 @@ include("head.php");
             //5. close connection
             mysqli_close($con);
             ?>
+
               </table>
-
-          </div>
-
-
-                        <br>  <br>  <br>
+      <br>  <br>  <br>
                         <center>
 
                              <a href="index.php"><button type="button" class="btn btn-warning" name="back" value="back">ย้อนกลับ</button></a>
         <br>  <br>  <br>
-          </div>  </div>  </div>  </div>
-
-
-
-
-
+      </div></div>  </div>  </div>  </div>
 
 
 
@@ -118,15 +118,7 @@ include("head.php");
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap.min.js"></script>
 <script>
-$(document).ready(function() {
-	$('#mydata').dataTable({
-		"bLengthChange": false,
-			   "scrollY":  "520px",
-    "scrollCollapse": true,
-    "paging":         false
-
-	});
-});
+$('#mydata').dataTable();
 </script>
 
 </body>

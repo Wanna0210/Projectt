@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <?php
 include("head.php");
 ?>
@@ -21,7 +22,7 @@ include("head.php");
 
             <div class="panel-body">
 
-  <div class="container">
+
   <table class="table table-striped table-bordered table table-hover" id="mydata">
     <thead>
       <tr>
@@ -29,26 +30,55 @@ include("head.php");
           <th>ชื่อ-สกุล</th>
           <th>ระดับชั้น</th>
           <th>วันที่:เวลาที่เข้าใช้</th>
+          <th>คาบเรียน</th>
           <th>สถานะ</th>
-            <th>คาบเรียน</th>
-          <th></th>
+          <th>อาการ</th>
+          <th>ชื่อยา</th>
+          <th>จำนวนที่ใช้</th>
+          <th>หน่วย</th>
+          <th>แก้ไข</th>
+          <th>ลบ</th>
       </tr>
     </thead>
-    <tfoot>
 
-    </tfoot>
     <tbody><center>
-      <tr>
-        <td>5610513023</td>
-        <td>วรรณาเจนสาคร</td>
-        <td>มัธยมศึกษาปีที่6</td>
-        <td>18/02/2017:13:12</td>
-        <td>นอน</td>
-        <td>5</td>
-        <td><a href=index.php>แก้ไข<i class="material-icons" style="font-size:16px">mode_edit</i></a>
-      <a href=index.php>รายละเอียด<i class="fa fa-eye" aria-hidden="true"></i></a></td>
+      <?php
+        //1. เชื่อมต่อ database:
+        include('connect.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
+        //2. query ข้อมูลจากตาราง tb_member:
+          $query_show = "SELECT * FROM addstudents,addtreatstudent ORDER BY id_student,datetimes asc" or die("Error:" . mysqli_error());
+          //3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result .
+          $result_show = mysqli_query($con, $query_show);
+          //4 . แสดงข้อมูลที่ query ออกมา โดยใช้ตารางในการจัดข้อมูล:
+          //หัวข้อตาราง
 
-      </tr>
+
+          while($row_show = mysqli_fetch_array($result_show)) {
+
+            echo "<tr align='center' bgcolor='#FFE4B5'>";
+            echo "<td>" .$row_show["id_student"] .  "</td> ";
+            echo "<td>"  .$row_show["fname"] .  " " .$row_show["lname"] .  "</td> ";
+            echo "<td>" .$row_show["level"] .  "</td> ";
+            echo "<td>" .$row_show["datetimes"] .  "</td> ";
+            echo "<td>" .$row_show["class"] .    "-" .$row_show["toclass"] .  "</td> ";
+            echo "<td>" .$row_show["status"] .  "</td> ";
+            echo "<td>" .$row_show["symptom"] .  "</td> ";
+              echo "<td>" .$row_show["namedrug"] .  "</td> ";
+                echo "<td>" .$row_show["amountused"] .  "</td> ";
+                  echo "<td>" .$row_show["unit"] .  "</td> ";
+
+            //แก้ไขข้อมูล
+            echo "<td><a href='edittreatstudents.php?datetimes=$row_show[0]'>edit</a></td> ";
+
+            //ลบข้อมูล
+            echo "<td>
+            <a href='deletetreatstudents.php?datetimes=$row_show[0]' onclick=\"return confirm('Do you want to delete this record? !!!')\">del</a></td> ";
+            echo "</tr>";
+          }
+          echo "";
+          //5. close connection
+          mysqli_close($con);
+          ?>
 
     </tbody></center>
 </table>

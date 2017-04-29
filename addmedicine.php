@@ -75,6 +75,7 @@ include("head.php");
                                   <option value="หน่วย">หน่วย</option>
                                   <option value="กล่อง">กล่อง</option>
                                   <option value="กระปุก">กระปุก</option>
+                                  <option value="แผง">แผง</option>
                                 </select></td>
                             <td>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                         </tr>
@@ -91,7 +92,7 @@ include("head.php");
                                   <option value="เม็ด">เม็ด</option>
                                   <option value="ขวด">ขวด</option>
                                   <option value="แผ่น">แผ่น</option>
-                                  <option value="แผง">แผง</option>
+
                                 </select>
                             </td>
                         </tr>
@@ -108,17 +109,17 @@ include("head.php");
                         <table>
                             <tr>
                                 <td valign="top">วิธีใช้ :</td>
-                                <td><textarea name="howtouse" rows="12" cols="40" wrap="physical"></textarea></td>
+                                <td><textarea name="howtouse" rows="5" cols="40" wrap="physical"></textarea></td>
                             </tr>
                               <td><br></td>
                             <tr>
                                 <td valign="top">สรรพคุณ :</td>
-                                <td><textarea name="properties" rows="15" cols="40" wrap="physical"></textarea></td>
+                                <td><textarea name="properties" rows="5" cols="40" wrap="physical"></textarea></td>
                             </tr>
                             <td><br>   </td>
                             <tr>
                                 <td valign="top">คำเตือน :</td>
-                                <td><textarea name="warning" rows="12" cols="40" wrap="physical"></textarea></td>
+                                <td><textarea name="warning" rows="5" cols="40" wrap="virtual"></textarea></td>
                             </tr>
                             <td><br>   </td>
 

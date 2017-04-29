@@ -1,5 +1,13 @@
 <?php
 include("head.php");
+include('connect.php');
+if($_REQUEST['id_student'] != "")
+{
+$id = $_REQUEST['id_student'];
+$query_show = "SELECT * FROM addstudents where id_student = '$id'";
+$result_show = mysqli_query($con,$query_show);
+$row_show = mysqli_fetch_array($result_show);
+}
 ?>
 
 
@@ -25,26 +33,22 @@ include("head.php");
             <div class="panel-body">
               <div class="row">
   <center>
-        <table width="100%">
 
-
-        <div class="container">
-
-
-            </table>
 
 <form id="formDataTreatment">  <!--ล้างข้อมูล-->
             <br><br>
 
-<table style="width:70%">
+<table style="width:71%">
   <!---คอลัมแรก--->
              <tr><td>
            </td>
                <td><h4>รหัสนักเรียน : </h4></td>
-                 <td><input type="text" name="id_student" value="" size="20" maxlength="10" disabled="disabled"></td>
+                 <td><input type="text" name="id_student" value="<?=$row_show['id_student']?>" size="20" maxlength="10" disabled="disabled"></td>
+                 <td><h4>ชื่อ-สกุล : </h4></td>
+                   <td><input type="text" name="name" value="<?=$row_show['fname']?>&nbsp; &nbsp; &nbsp;<?=$row_show['lname']?>" size="20" maxlength="1" disabled="disabled"></td>
 
-               <td><h4>วันที่เข้ารับการรักษา : </h4></td>
-                 <td><input name="txtdate" type="text" id="txtdate" value="<? echo date("d/m/Y H:i"); ?>"></td>
+
+                 <td></td>
                  <td></td>
              </tr>
 
@@ -52,11 +56,20 @@ include("head.php");
              <tr>
                <td width="5%">
              </td>
-               <td><h4>ชื่อ-สกุล : </h4></td>
-                 <td><input type="text" name="name" value="" size="20" maxlength="1" disabled="disabled"></td>
+             <td><h4> ระดับชั้น : </td>
+              <td> <input type="text" name="level" value="<?=$row_show['level']?>ปีที่ <?=$row_show['class']?>" size="20" maxlength="1" disabled="disabled"></h4></td>
+                 <td><h4> สถานะ : </h4></td>
+                     <td><div class="col-xs-10">
+                       <select class="form-control" name="status" id="status" data-width="fit">
+                         <option value="">--- เลือกสถานะ --- </option>
+                         <option value="นอน">นอน</option>
+                         <option value="ไม่นอน">ไม่นอน</option>
+                         <option value="ส่งโรงพยาบาล">ส่งโรงพยาบาล</option>
+                       </select>
+                         </div>
+                     </td>
+                     <td width="20%" ></td>
 
-                 <td><h4> ระดับชั้น : </h4></td>
-                   <td><input type="text" name="level" value="" size="20" maxlength="1" disabled="disabled"></td>
              </tr>
 
  <!---คอลัมสาม-->
@@ -69,17 +82,7 @@ include("head.php");
                  <input type="text" name="toclass" value="" size="1" maxlength="1"/>
                </td>
 
-               <td><h4> สถานะ : </h4></td>
-                   <td><div class="col-xs-13">
-                     <select class="form-control" name="status" id="status" data-width="fit">
-                       <option value="">--- เลือกสถานะ --- </option>
-                       <option value="นอน">นอน</option>
-                       <option value="ไม่นอน">ไม่นอน</option>
-                       <option value="ส่งโรงพยาบาล">ส่งโรงพยาบาล</option>
-                     </select>
-                       </div>
-                   </td>
-                   <td width="20%"></td>
+
              </tr>
 
          </table>
@@ -125,19 +128,46 @@ include("head.php");
                      </tr>
 
  <!---คอลัมสอง--->
-                     <tr><td></td>
-                         <td valign="top"><h4>ชื่อยา :</h4></td>
-                           <td colspan="4"> <div class="col-xs-15">
-                             <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="--- เลือกชื่อยา ---">
-        <option>ยาพาราซีตามอน</option>
-        <option>ยาแก้แพ้</option>
-        <option>ยาญ่า</option>
-        <option>ยา</option>
-        <option>A rrm</option>
-      </select>
-                              </div></td>
+ <tr><td></td>
+      <td valign="top"><h4>รหัสยา :</h4></td>
+        <td colspan="3">
+          <div class="col-xs-15">
 
-                     </tr>
+            <select class="form-control"  name="namedrug" id="namedrug" data-width="fit">
+
+            <?php
+            include('connect.php');
+            $query = "SELECT * FROM addmedicine";
+            $result = mysqli_query($con, $query);
+            while ($data = mysqli_fetch_array($result) ) {
+            echo "<option value=$data[id_med]>$data[id_med]</option>";
+            }
+            ?>
+            </select>
+           </div>
+         </td>
+   </tr>
+
+
+   <tr><td></td>
+       <td valign="top"><h4>ชื่อยา :</h4></td>
+         <td colspan="3">
+           <div class="col-xs-15">
+
+             <select class="form-control"  name="namedrug" id="namedrug" data-width="fit">
+
+             <?php
+             include('connect.php');
+             $query = "SELECT * FROM addmedicine";
+             $result = mysqli_query($con, $query);
+             while ($data = mysqli_fetch_array($result) ) {
+             echo "<option value=$data[name_med]>$data[name_med]</option>";
+             }
+             ?>
+             </select>
+            </div>
+          </td>
+    </tr>
 
  <!---คอลัมสาม--->
                      <tr><td></td>
@@ -169,6 +199,8 @@ include("head.php");
 
 
  </div>
+
+
 
  <br>
 
@@ -218,7 +250,7 @@ include("head.php");
   </div>
 </div>
 
-<!--    <style>
+  <!-- <style>
             table,
             th,
             td {
@@ -276,7 +308,9 @@ include("head.php");
         		success: function(res){
         				console.log(res);
         				if(res=='success'){window.location.href = 'index.php';
-        					alert('Save Successfully.');
+        					alert("บันทึกข้อมูลสำเร็จแล้ว");
+        				}else {
+        				  alert("ไม่สามารถบันทึกข้อมูลได้");
         				}
         		}
         	});

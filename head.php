@@ -90,4 +90,7 @@ session_start(); //เปิด session
 	</nav>
 </body>
   <script src="js/bootstrap-select.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+
+
 </html>

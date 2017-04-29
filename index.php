@@ -11,14 +11,83 @@ include("head.php");
               <div class="panel panel-default">
                 <div class="panel-heading">
 
-                        <h1 class="page-header" > <img src="admin-icon.png" style="width:66px;height:66px;">Admin&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-          &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   </font >
+                        <h1 class="page-header" > <img src="admin-icon.png" style="width:66px;height:66px;">Admin
              </div>
 
 
                 <div class="panel-body">
+
 <div class="container">
+
+
+<?php
+include("connect.php");
+
+//$sqlChkExpire = "SELECT * FROM addtreatstudent where ORDER BY datetimes asc" or die("Error:" . mysqli_error());
+//$qNExpire = mysql_query($sqlChkExpire) or die(mysql_error());
+
+
+function status_date_notify($endDate){
+    $chk_day_now=time();
+    $chk_day_expire=strtotime($endDate);
+    $chk_day30=strtotime($endDate." -30 day");
+    $chk_day15=strtotime($endDate." -15 day");
+    $chk_day7=strtotime($endDate." -7 day");
+    //  สามารถเพิ่มตัวแปร และเงื่อนไข เพิ่มเติมสำหรับตรวจสอบได้ตามต้องการ
+    if($chk_day_now>=$chk_day_expire){
+        return 5; // เงื่อนไขรายการเมื่อหมดอายุ
+    }else{
+        if($chk_day_now>=$chk_day30 && $chk_day_now<$chk_day15){
+            return 4; // เงื่อนไขรายการจะหมดอายุในอีก 30 วัน
+        }elseif($chk_day_now>=$chk_day15 && $chk_day_now<$chk_day7){
+            return 3; // เงื่อนไขรายการจะหมดอายุในอีก 15 วัน
+        }elseif($chk_day_now>=$chk_day7 && $chk_day_now<$chk_day_expire){
+            return 2; // เงื่อนไขรายการจะหมดอายุในอีก 7 วัน
+        } //else{
+        //    return 1; // เงื่อนไขรายการยังไม่หมดอายุ
+      //  }
+    }
+}
+////////////////////////////////////////////////
+//////        ตัวอย่างการประยุกต์ใช้งานอย่างง่าย
+//////////////////////////////////////////////////
+
+
+$case_notify=status_date_notify("2017-05-10");
+switch($case_notify){
+    case 5:   ?>
+    <div class="alert alert-danger"><strong>คำเตือน!</strong>
+    <?   echo "เงื่อนไขรายการเมื่อหมดอายุ"; ?>
+
+    </div>
+      <?
+        break;
+    case 4:
+        echo "เงื่อนไขรายการจะหมดอายุในอีก 30 วัน";
+        break;
+    case 3: ?>
+    <div class="alert alert-warning" role="alert"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;<strong>คำเตือน!</strong>
+    <? echo "มียาที่กำลังจะหมดอายุในอีก 15 วัน"; ?>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+  </div>
+      <?  break;
+    case 2:  ?>
+    <div class="alert alert-danger" role="alert" ><strong><i class="glyphicon glyphicon-alert"> คำเตือน! </i></strong>
+    <? echo "มียาที่กำลังจะหมดอายุในอีก 7 วัน"; ?>
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    </div>
+      <?
+
+  //      break;
+  //  default:  // กรณีค่าเท่ากับ 1
+  //      echo "เงื่อนไขรายการยังไม่หมดอายุ";
+        break;
+}
+
+?>
+
               <div class="col-md-4 portfolio-item">
+
                     <div class="panel panel-default">
                 <div class="panel-footer">
 
@@ -65,9 +134,9 @@ include("head.php");
                   <h5>
                   <i class="fa fa-file-o" style="font-size:24px"></i>&nbsp;<a href="reportdrug.php">รายงานข้อมูลยาทั้งหมด</a>
               </h5>
-                  <h5>
-              <i class="fa fa-ambulance" style="font-size:24px"></i>&nbsp;<a href="reporthospital.php">รายงานส่งโรงพยาบาล</a>
-              </h5>
+                  <!--  <h5>
+            <i class="fa fa-ambulance" style="font-size:24px"></i>&nbsp;<a href="reporthospital.php">รายงานส่งโรงพยาบาล</a>
+          </h5> -->
 <br><br><br><br><br><br><br><br>
               </div>
             </div>

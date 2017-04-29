@@ -1,8 +1,44 @@
+<!--readonly="true"-->
 <?php
 include("head.php");
+// เชื่่อมต่อฐานข้อมูล
+include('connect.php');
+//เรียกข้อมูลจาก รหัส มาแสดงใน textbox
+
+//if($_POST['Edit'])
+//{
+
+  //$id_student = $_POST['id_student'];
+  //$tname = $_POST['tname'];
+  //$fname = $_POST['fname'];
+  //$lname = $_POST['lname'];
+  //$level = $_POST['level'];
+  //$class = $_POST['class'];
+  //$birthday = $_POST['birthday'];
+  //$bloodtype = $_POST['bloodtype'];
+  //$disease = $_POST['disease'];
+  //$intolerance = $_POST['intolerance'];
+  //$id = $_REQUEST['id_student'];
+// แก้ไขข้อมูล
+//$query_edit = "update addstudents set
+//fname = '$fname' , lname = '$lname' , level = '$level' , class = '$class' , birthday = '$birthday' , bloodtype = '$bloodtype', disease = '$disease', intolerance = '$intolerance'  where id_student = '$id'";
+//mysqli_query($query_edit) or die(mysqli_error());
+//echo "แก้ไขข้อมูลของ $name $surname สำเร็จแล้ว";
+//-->
+//}
+
+if($_REQUEST['id_student'] != "")
+{
+$id = $_REQUEST['id_student'];
+$query_show = "SELECT * FROM addstudents where id_student = '$id'";
+$result_show = mysqli_query($con,$query_show);
+$row_show = mysqli_fetch_array($result_show);
+}
+
+
+//--->
+
 ?>
-
-
 <body>
   <div class="row">
     <div class="col-4"> <p align = right><font size = "2"><a href="logout.php"> log out</a></p></font ></div>
@@ -27,8 +63,8 @@ include("head.php");
 						<form id="formDataStudents">   <!--ล้างข้อมูล-->
 <table>
  <br>
-          <tr><td> <h4>รหัสนักเรียน :&nbsp; &nbsp;&nbsp;</td>
-        <td colspan="2"><h4><input type="text" name="id_student" value="" size="20" maxlength="10"/></h4></h4></td></tr>
+          <tr><td> <h4>รหัสนักเรียน :&nbsp; &nbsp;&nbsp;</h4></td>
+        <td colspan="2"><h4><input type="text" name="id_student" value="<?=$row_show['id_student']?>" size="20" maxlength="10"/></h4></td></tr>
 <td><br></td>
 
 
@@ -42,8 +78,8 @@ include("head.php");
 <option value="นางสาว">นางสาว</option>
 </select></td>
 
-<td><h4>&nbsp; &nbsp;  &nbsp;  ชื่อ : &nbsp;  <input type="text" name="fname" value="" size="20" maxlength="15"/>
-  &nbsp; นามสกุล : &nbsp;<input type="text" name="lname" value="" size="20" maxlength="15"/></td></tr></table>
+<td><h4>&nbsp; &nbsp;  &nbsp;  ชื่อ : &nbsp;  <input type="text" name="fname" value="<?=$row_show['fname']?>" size="20" maxlength="15"/>
+  &nbsp; นามสกุล : &nbsp;<input type="text" name="lname" value="<?=$row_show['lname']?>" size="20" maxlength="15"/></td></tr></table>
 
   <td><br></td>
 
@@ -81,12 +117,13 @@ include("head.php");
 <tr>
         <td><h4>วันเกิด :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h4></td>
         <td colspan="2">
-            <div class="form-group"><input type="date" id="birthday" name="birthday" class="form-control"></div></td>
+            <div class="form-group"><input type="date" id="birthday" name="birthday" value="<?=$row_show['birthday']?>" class="form-control"></div></td>
 
 
         <td><h4> &nbsp; &nbsp; &nbsp; หมู่เลือด : &nbsp; &nbsp; &nbsp;&nbsp; </h4></td>
           <td>
             <div class="col-xs-13">
+
               <select class="form-control" name="bloodtype" id="bloodtype" data-width="fit">
                 <option value="">--- เลือกหมู่เลือด --- </option>
                 <option value="O">O</option>
@@ -94,7 +131,8 @@ include("head.php");
                 <option value="B">B</option>
                 <option value="AB">AB</option>
                 <option value="อื่นๆ">อื่นๆ</option>
-              </select>
+
+            </select>
           </td>
         </tr>
 
@@ -106,9 +144,9 @@ include("head.php");
   <td><br></td>
 <tr>
     <td valign="top"><h4>โรคประจำตัว :&nbsp;&nbsp;</h4></td>
-    <td><textarea name="disease" rows="7" cols="40" wrap="physical"></textarea></td>
+    <td><textarea name="disease" rows="7" cols="40" wrap="physical"> <?=$row_show['disease']?> </textarea></td>
     <td valign="top"><h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;แพ้ยา :&nbsp;&nbsp;</h4></td>
-    <td><textarea name="intolerance" rows="7" cols="40" wrap="physical"></textarea></td>
+    <td><textarea name="intolerance" rows="7" cols="40" wrap="physical"> <?=$row_show['intolerance']?> </textarea></td>
 </tr>
 </table>
         </div>
@@ -171,8 +209,10 @@ $('#btnSave').click(function(e){
 
 		success: function(res){
 				console.log(res);
-				if(res=='success'){window.location.href = 'addtreatstudents.php';
-					alert('Save Successfully.');
+				if(res=='success'){
+					alert('แก้ไขข้อมูลแล้ว');
+				}else {
+				  alert('ไม่สามารถแก้ไขข้อมูลได้');
 				}
 		}
 	});
